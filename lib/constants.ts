@@ -7,6 +7,8 @@ export type EventItem = {
     time: string; // e.g., "09:00 AM"
 };
 
+
+
 export const events: EventItem[] = [
     {
         image: "/images/event1.png",
