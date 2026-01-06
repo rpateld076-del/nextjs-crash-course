@@ -4,7 +4,6 @@ import { useRef, useEffect, useState } from "react";
 import { Renderer, Program, Triangle, Mesh } from "ogl";
 
 
-
 export type RaysOrigin =
     | "top-center"
     | "top-center-offset"
