@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint"
   },
+
   "dependencies": {
     "cloudinary": "^2.8.0",
     "mongodb": "^7.0.0",
