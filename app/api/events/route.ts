@@ -8,6 +8,7 @@ export async function POST(req: NextRequest){
 
         const formData = await req.formData();
 
+
         let event;
 
         try {
