@@ -1,7 +1,6 @@
 import { Schema, model, models, Document } from 'mongoose';
 
 // TypeScript interface for Event document
-
 export interface IEvent extends Document {
     title: string;
     slug: string;
@@ -43,7 +42,9 @@ const EventSchema = new Schema<IEvent>(
         },
         overview: {
             type: String,
-            required: [true, 'Overview is required']
+            required: [true, 'Overview is required'],
+            trim: true,
+            maxlength: [500, 'Overview cannot exceed 500 characters'],
         },
         image: {
             type: String,
@@ -127,7 +128,7 @@ EventSchema.pre('save', function (next) {
         event.time = normalizeTime(event.time);
     }
 
-
+    next();
 });
 
 // Helper function to generate URL-friendly slug

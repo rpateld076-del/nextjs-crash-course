@@ -48,16 +48,16 @@ BookingSchema.pre('save', async function (next) {
             if (!eventExists) {
                 const error = new Error(`Event with ID ${booking.eventId} does not exist`);
                 error.name = 'ValidationError';
-                return (error);
+                return next(error);
             }
         } catch {
             const validationError = new Error('Invalid events ID format or database error');
             validationError.name = 'ValidationError';
-            return (validationError);
+            return next(validationError);
         }
     }
 
-
+    next();
 });
 
 // Create index on eventId for faster queries
@@ -68,8 +68,6 @@ BookingSchema.index({ eventId: 1, createdAt: -1 });
 
 // Create index on email for user booking lookups
 BookingSchema.index({ email: 1 });
-
-
 
 // Enforce one booking per events per email
 BookingSchema.index({ eventId: 1, email: 1 }, { unique: true, name: 'uniq_event_email' });
