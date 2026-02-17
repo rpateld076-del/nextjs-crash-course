@@ -4,7 +4,7 @@ import Event from '@/database/event.model';
 
 export async function POST(req: NextRequest){
     try {
-        await connectDB;
+        await connectDB();
 
         const formData = await req.formData();
 
